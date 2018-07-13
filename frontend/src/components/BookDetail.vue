@@ -1,13 +1,26 @@
 <template>
-  <article>
-    <div class="content">
-      <p class="title">Tall tile</p>
-      <p class="subtitle">With even more content</p>
+  <div class="card">
+    <div>
+      <figure>
+        <img class="book-image" :src="book.coverUrl" alt="Cover of the book">
+      </figure>
+    </div>
+    <div class="card-content">
+      <p class="title">
+        {{ book.title }}
+      </p>
+      <p class="subtitle">
+        {{ book.author }}
+      </p>
+
       <div class="content">
-        <!-- Content -->
+        {{ book.description }}
+        <a href="#">#css</a> <a href="#">#responsive</a>
+        <br>
+        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       </div>
     </div>
-  </article>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,5 +35,8 @@ export default class BookDetail extends Vue {
 </script>
 
 <style scoped lang="scss">
-
+.book-image {
+  max-height: 400px;
+  margin-top: 10px;
+}
 </style>

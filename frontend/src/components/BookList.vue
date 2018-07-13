@@ -1,15 +1,6 @@
 <template>
   <div class="hello">
-    <h1>Book list</h1>
-    <article class="message" v-for="book in books" :key="book.id">
-        <div class="message-header">
-            <p>{{ book.title }} by {{ book.author }}</p>
-            <button class="delete" aria-label="delete"></button>
-        </div>
-        <div class="message-body">
-            {{ book.description }}
-        </div>
-    </article>
+    <book-preview v-for="book in books" :key="book.id" :book="book"></book-preview>
   </div>
 </template>
 
@@ -17,8 +8,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import Book from '../classes/Book';
+import BookPreview from './BookPreview.vue';
 
-@Component
+@Component({
+  components: {
+    BookPreview,
+  },
+})
 export default class BookList extends Vue {
   @Prop() private books!: Book[];
 }

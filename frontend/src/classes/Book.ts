@@ -7,5 +7,6 @@ export default class Book {
       public description: string,
       public type: string,
       public status: string,
+      public coverUrl: string,
     ) {}
 }
