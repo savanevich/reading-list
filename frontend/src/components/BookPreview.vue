@@ -2,7 +2,7 @@
     <div class="box book-preview" @click="selectBook">
       <article class="media">
         <div class="media-left">
-          <figure class="image is-64x64">
+          <figure v-handle class="image is-64x64">
             <img :src="book.coverUrl" alt="Image">
           </figure>
         </div>
@@ -39,8 +39,9 @@
 </template>
 
 <script>
-import EventBus from '../event-bus';
+import { ElementMixin, HandleDirective } from 'vue-slicksort';
 
+import EventBus from '../event-bus';
 import Book from '../classes/Book';
 
 export default {
@@ -48,6 +49,8 @@ export default {
   props: {
     book: Book,
   },
+  mixins: [ElementMixin],
+  directives: { handle: HandleDirective },
   computed: {
     description() {
       return (this.book.description.length > 110) ? `${this.book.description.substr(0, 110 - 1)}...` : this.book.description;
@@ -72,6 +75,10 @@ export default {
 
   &:hover {
     background-color: rgba(255,221,87,.8);
+  }
+
+  .image {
+    cursor: move;
   }
 }
 </style>

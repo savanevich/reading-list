@@ -5,7 +5,13 @@
     <category-selector />
     <div class="columns">
       <div class="column is-two-fifths">
-        <book-list :books="books" />
+        <book-list :books="books"
+        :value="books"
+        :transitionDuration="250"
+        :lockAxis="'y'"
+        :lockToContainerEdges="true"
+        :useDragHandle="true"
+        @input="onSortingEnded" />
       </div>
       <div class="column is-three-fifths">
         <book-detail :book="selectedBook" />
@@ -43,6 +49,9 @@ export default {
   methods: {
     selectBook() {
       EventBus.$emit('bookSelected', this.book);
+    },
+    onSortingEnded(sortedBooks) {
+      this.books = sortedBooks;
     },
   },
   mounted() {

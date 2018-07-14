@@ -1,10 +1,13 @@
 <template>
   <div class="hello list">
-    <book-preview v-for="book in books" :key="book.id" :book="book"></book-preview>
+    <book-preview v-for="(book, index) in books" :key="index" :index="index" :book="book">
+    </book-preview>
   </div>
 </template>
 
 <script>
+import { ContainerMixin } from 'vue-slicksort';
+
 import BookPreview from './BookPreview.vue';
 
 export default {
@@ -12,6 +15,7 @@ export default {
   props: {
     books: Array,
   },
+  mixins: [ContainerMixin],
   components: {
     BookPreview,
   },
