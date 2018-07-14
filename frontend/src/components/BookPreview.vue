@@ -38,24 +38,27 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { EventBus } from '../event-bus';
+<script>
+import EventBus from '../event-bus';
 
 import Book from '../classes/Book';
 
-@Component
-export default class BookPreview extends Vue {
-  @Prop() private book!: Book;
-
-  get description() {
-    return (this.book.description.length > 110) ? this.book.description.substr(0, 110 - 1) + '...' : this.book.description;
-  }
-
-  public selectBook() {
-    EventBus.$emit('bookSelected', this.book);
-  }
-}
+export default {
+  name: 'BookPreview',
+  props: {
+    book: Book,
+  },
+  computed: {
+    description() {
+      return (this.book.description.length > 110) ? `${this.book.description.substr(0, 110 - 1)}...` : this.book.description;
+    },
+  },
+  methods: {
+    selectBook() {
+      EventBus.$emit('bookSelected', this.book);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -68,7 +71,7 @@ export default class BookPreview extends Vue {
   cursor: pointer;
 
   &:hover {
-    background-color: #209cee;
+    background-color: rgba(255,221,87,.8);
   }
 }
 </style>

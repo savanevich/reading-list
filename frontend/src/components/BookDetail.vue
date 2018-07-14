@@ -23,15 +23,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
+<script>
 import Book from '../classes/Book';
 
-@Component
-export default class BookDetail extends Vue {
-  @Prop() private book!: Book;
-}
+export default {
+  name: 'BookDetail',
+  props: {
+    book: Book,
+  },
+};
 </script>
 
 <style scoped lang="scss">

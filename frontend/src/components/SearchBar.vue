@@ -1,7 +1,10 @@
 <template>
 <div class="field has-addons has-addons-centered search-bar">
   <p class="control is-expanded">
-    <input class="input is-medium is-rounded" type="text" placeholder="Search by Book Title, Author, or ISBN">
+    <input
+    class="input is-medium is-rounded"
+    type="text"
+    placeholder="Search by Book Title, Author, or ISBN">
   </p>
   <p class="control">
     <a class="button is-info is-rounded is-medium">
@@ -11,12 +14,10 @@
 </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class SearchBar extends Vue {
-}
+<script>
+export default {
+  name: 'SearchBar',
+};
 </script>
 
 <style scoped lang="scss">

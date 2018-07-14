@@ -1,23 +1,21 @@
 <template>
-  <div class="hello">
+  <div class="hello list">
     <book-preview v-for="book in books" :key="book.id" :book="book"></book-preview>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import Book from '../classes/Book';
+<script>
 import BookPreview from './BookPreview.vue';
 
-@Component({
+export default {
+  name: 'BookList',
+  props: {
+    books: Array,
+  },
   components: {
     BookPreview,
   },
-})
-export default class BookList extends Vue {
-  @Prop() private books!: Book[];
-}
+};
 </script>
 
 <style scoped lang="scss">

@@ -11,20 +11,19 @@
   "dependencies": {
     "bulma": "^0.7.1",
     "vue": "^2.5.16",
-    "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^6.0.0"
+    "vue-slicksort": "^0.1.8"
   },
   "devDependencies": {
-    "@types/jest": "^22.0.1",
     "@vue/cli-plugin-babel": "^3.0.0-rc.3",
-    "@vue/cli-plugin-typescript": "^3.0.0-rc.3",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.4",
     "@vue/cli-plugin-unit-jest": "^3.0.0-rc.3",
     "@vue/cli-service": "^3.0.0-rc.3",
+    "@vue/eslint-config-airbnb": "^3.0.0-rc.4",
     "@vue/test-utils": "^1.0.0-beta.16",
     "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "ts-jest": "^22.4.6",
     "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [

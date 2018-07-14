@@ -18,12 +18,10 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class Navigarion extends Vue {
-}
+<script>
+export default {
+  name: 'Navigation',
+};
 </script>
 
 <style scoped lang="scss">
