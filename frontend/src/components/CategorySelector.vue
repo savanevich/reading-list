@@ -6,7 +6,7 @@
         :key="category.id"
         :class="{ 'is-active' : (category.id === chosenCategoryId) }"
       >
-        <a @click="chosenCategoryId = category.id">{{ category.name }}</a>
+        <a @click="changeCategory(category.id)">{{ category.name }}</a>
       </li>
     </ul>
   </div>
@@ -17,10 +17,15 @@ import CATEGORIES from '../constants/Categories';
 
 export default {
   name: 'CategorySelector',
+  props: ['chosenCategoryId'],
   data: () => ({
     categories: CATEGORIES,
-    chosenCategoryId: 1,
   }),
+  methods: {
+    changeCategory(categoryId) {
+      this.$emit('onCategoryChanged', categoryId);
+    },
+  },
 };
 </script>
 

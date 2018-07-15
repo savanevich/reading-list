@@ -1,5 +1,5 @@
 export default class Book {
-  constructor(id, isbn, title, author, description, type, status, coverUrl) {
+  constructor(id, isbn, title, author, description, type, status, coverUrl, categoryId) {
     this.id = id;
     this.isbn = isbn;
     this.title = title;
@@ -8,5 +8,6 @@ export default class Book {
     this.type = type;
     this.status = status;
     this.coverUrl = coverUrl;
+    this.categoryId = categoryId;
   }
 }
