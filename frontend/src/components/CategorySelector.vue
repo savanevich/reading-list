@@ -8,22 +8,52 @@
       >
         <a @click="changeCategory(category.id)">{{ category.name }}</a>
       </li>
+      <li>
+        <b-dropdown position="is-bottom-left" ref="addCategoryDropdown">
+          <a slot="trigger">
+            <span>+</span>
+          </a>
+
+         <b-dropdown-item custom paddingless>
+            <form action="">
+              <div class="modal-card" style="width:400px;">
+                <section class="modal-card-body">
+                  <b-field>
+                    <b-input
+                      v-model="categoryName"
+                      placeholder="Category name"
+                      type="text">
+                    </b-input>
+                    <p class="control">
+                      <button class="button is-primary" @click.prevent="onAddCategory">Add</button>
+                   </p>
+                  </b-field>
+                </section>
+              </div>
+            </form>
+          </b-dropdown-item>
+        </b-dropdown>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import CATEGORIES from '../constants/Categories';
 
 export default {
   name: 'CategorySelector',
-  props: ['chosenCategoryId'],
+  props: ['chosenCategoryId', 'categories'],
   data: () => ({
-    categories: CATEGORIES,
+    categoryName: '',
   }),
   methods: {
     changeCategory(categoryId) {
       this.$emit('onCategoryChanged', categoryId);
+    },
+    onAddCategory() {
+      this.$emit('onAddCategory', this.categoryName);
+      this.$refs.addCategoryDropdown.isActive = false;
+      this.categoryName = '';
     },
   },
 };

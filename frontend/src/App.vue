@@ -2,11 +2,17 @@
   <div id="app" class="container">
     <!-- <navigation /> -->
     <search-bar />
-    <category-selector :chosen-category-id="categoryId" @onCategoryChanged="onCategoryChanged" />
+    <category-selector
+      :categories="categories"
+      :chosen-category-id="categoryId"
+      @onCategoryChanged="onCategoryChanged"
+      @onAddCategory="onAddCategory"
+    />
     <div class="columns">
       <div class="column is-two-fifths">
-        <book-list :books="filteredBooks"
+        <book-list :books="books"
         :value="books"
+        :category-id="categoryId"
         :transitionDuration="250"
         :lockAxis="'y'"
         :lockToContainerEdges="true"
@@ -23,7 +29,10 @@
 <script>
 import EventBus from './event-bus';
 
+import CATEGORIES from './constants/Categories';
+
 import Book from './classes/Book';
+import Category from './classes/Category';
 import BookList from './components/BookList.vue';
 import BookDetail from './components/BookDetail.vue';
 import CategorySelector from './components/CategorySelector.vue';
@@ -44,18 +53,10 @@ export default {
   name: 'app',
   data: () => ({
     books,
+    categories: CATEGORIES,
     selectedBook: books[0],
     categoryId: 1,
   }),
-  computed: {
-    filteredBooks() {
-      if (this.categoryId) {
-        return this.books.filter(book => +book.categoryId === +this.categoryId);
-      }
-
-      return [];
-    },
-  },
   methods: {
     selectBook() {
       EventBus.$emit('bookSelected', this.book);
@@ -65,6 +66,11 @@ export default {
     },
     onCategoryChanged(chosenCategoryId) {
       this.categoryId = chosenCategoryId;
+    },
+    onAddCategory(categoryName) {
+      // TODO: add ajax request here on adding category and save its id
+      const fakeId = Math.floor(Math.random() * 100) + 10;
+      this.categories.push(new Category(fakeId, categoryName));
     },
   },
   mounted() {
