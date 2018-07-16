@@ -9,7 +9,7 @@
         <a @click="changeCategory(category.id)">{{ category.name }}</a>
       </li>
       <li>
-        <b-dropdown position="is-bottom-left" ref="addCategoryDropdown">
+        <b-dropdown ref="addCategoryDropdown">
           <a slot="trigger">
             <span>+</span>
           </a>
@@ -51,14 +51,19 @@ export default {
       this.$emit('onCategoryChanged', categoryId);
     },
     onAddCategory() {
-      this.$emit('onAddCategory', this.categoryName);
-      this.$refs.addCategoryDropdown.isActive = false;
-      this.categoryName = '';
+      if (this.categoryName.length > 2) {
+        this.$emit('onAddCategory', this.categoryName);
+        this.$refs.addCategoryDropdown.isActive = false;
+        this.categoryName = '';
+      }
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-
+.tabs {
+    overflow: initial;
+    overflow-x: initial;
+}
 </style>
