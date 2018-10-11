@@ -5,7 +5,10 @@ import 'buefy/lib/buefy.css';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
-Vue.use(Buefy);
+Vue.use(Buefy, {
+  defaultIconPack: 'fas',
+  defaultContainerElement: '#content',
+});
 
 new Vue({
   render: h => h(App),

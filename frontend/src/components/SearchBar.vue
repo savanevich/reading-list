@@ -23,6 +23,7 @@ export default {
 <style scoped lang="scss">
 .search-bar {
     width: 80%;
-    margin: 30px auto;
+    margin: 30px auto 80px;
+    padding-bottom: 20px;
 }
 </style>
